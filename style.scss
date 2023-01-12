@@ -1,0 +1,55 @@
+$color: blue;
+$border-color: green;
+$font-size: 1rem;
+
+div {
+  border: 1px red solid;
+  width: 60vw;
+}
+
+.container {
+  color: green;
+  text-decoration: underline;
+  text-underline-offset: 0.5rem;
+  text-decoration-color: blue;
+  text-decoration-thickness: 0.1rem;
+  text-align: center;
+  &-sub {
+    @extend .container;
+    border: red solid 1px;
+    padding: 1rem;
+  }
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  text-align: center;
+}
+
+@function size-calc($size: 1rem) {
+  $size: 1rem;
+  @return $size;
+}
+
+@mixin article-card($color, $border-color, $font-size) {
+  color: $color;
+  border: 1px $border-color solid;
+  padding: 10px;
+  font-size: size-calc();
+
+  &:nth-child(even) {
+    color: red;
+  }
+
+  width: 60vw;
+}
+
+article {
+  @include article-card($color, $border-color, $font-size);
+}
+
+.second-article {
+  @include article-card(green, green, 24px);
+}
